@@ -1,5 +1,3 @@
-
-
 def main():
 
     x = sum_square_difference(100)
