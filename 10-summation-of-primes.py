@@ -13,7 +13,7 @@ def summation_of_prime(n):
     prime_range = range(2, n + 1)
     prime_range_filtered = filter(fast_prime_check, prime_range)
     result = reduce(prime_check, prime_range)
-    print(result)
+    return result
 
 
 def fast_prime_check(n):
