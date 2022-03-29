@@ -6,7 +6,7 @@ def main():
 
 def generate_collatz_sequence(n):
     cache = {}
-    start_points = range(1, n)
+    start_points = range(1, n + 1)
     max_length = 0
     longest_chain = []
     collatz_sequence = map(
@@ -15,12 +15,15 @@ def generate_collatz_sequence(n):
         if sequence[1] > max_length:
             max_length = sequence[1]
             longest_chain = sequence[0]
+
     return longest_chain
 
 
 def collatz_sequence_generator_with_cache(n, cache):
     key = n
     n = float(n)
+    if key in cache:
+        return [n] + cache.get(n)
     result = [n]
     while n != 1:
         if n in cache:
