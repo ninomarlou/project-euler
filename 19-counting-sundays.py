@@ -1,9 +1,11 @@
 def main():
-    x = counting_sundays()
+    start_year = 1901
+    end_year = 2000
+    x = counting_sundays(start_year, end_year)
     print(x)
 
 
-def counting_sundays():
+def counting_sundays(start_year, end_year):
 
     year = 1900
     month = 1
@@ -15,7 +17,6 @@ def counting_sundays():
 
     while forward:
 
-        # day rules
         if month in [9, 4, 6, 11] and day == 30:
             day = 0
             month += 1
@@ -31,15 +32,12 @@ def counting_sundays():
 
         if month == 2:
             if year % 4 != 0:
-                # not leap year
                 if day == 28:
                     day = 0
                     month += 1
             else:
-                # leap year
                 if year % 100 == 0 and year % 400 == 0:
                     if day == 29:
-                        # print(day,month,year,weekday,result)
                         day = 0
                         month += 1
                 elif year % 100 == 0 and year % 400 != 0:
@@ -48,7 +46,6 @@ def counting_sundays():
                         month += 1
                 else:
                     if day == 29:
-                        # print(day,month,year,weekday,result)
                         day = 0
                         month += 1
 
@@ -59,10 +56,10 @@ def counting_sundays():
         else:
             weekday += 1
 
-        if weekday == 7 and day == 1 and year > 1900:
+        if weekday == 7 and day == 1 and year >= start_year:
             result += 1
 
-        if year == 2001:
+        if year == (end_year) + 1:
             forward = 0
 
     return result
