@@ -1,5 +1,4 @@
 import sympy
-import math
 from eulerlib import primes
 
 
@@ -10,24 +9,24 @@ def main():
 
 def truncatable_primes():
     p = primes(1000000)
-    result = []
+    result = 0
+    result_count = 0
     for prime in p:
         if trunctable_check(prime) and prime > 10:
-            result.append(prime)
-        if len(result) == 11:
-            return sum(result)
+            result += prime
+            result_count += 1
+            if result_count == 11:
+                return result
 
 
 def trunctable_check(prime):
-    result = True
     prime = str(prime)
     for i in range(0, len(prime), 1):
         if sympy.isprime(int(prime[i:])) == False:
-            result = False
+            return False
         if prime[:-i] != '' and sympy.isprime(int(prime[:-i])) == False:
-            result = False
-        # print(prime[i:], prime[:-i], prime[:-i] == '')
-    return result
+            return False
+    return True
 
 
 if __name__ == "__main__":
