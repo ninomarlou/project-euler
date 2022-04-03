@@ -24,11 +24,6 @@ def is_triangle(word_value):
     return False
 
 
-def coded_triangle_numers(n):
-
-    pass
-
-
 def get_word_value(word, letter_dict):
     result = 0
     for l in word:
